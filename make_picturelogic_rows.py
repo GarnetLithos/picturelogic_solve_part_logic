@@ -2,11 +2,6 @@
 
 from itertools import combinations
 
-data = {
-  "rows": [[2, 2], [0], [1, 1, 1], [3], [3]],
-  "cols": [[1, 1], [2, 1], [3], [2, 1], [1, 1]]
-}
-
 
 def make_rows_combinations(rows, row_len):
     for row in rows:
@@ -26,7 +21,9 @@ def make_rows_combinations(rows, row_len):
 
 
 def make_rows_pool(rows, row_len):
+    rows_pool = []
     row_line_num = 0
+
     for row_combinations in make_rows_combinations(rows, row_len):
         row_sum = 0
         row_pool = []
@@ -49,9 +46,7 @@ def make_rows_pool(rows, row_len):
 
             row_pool.append(row)
 
-        yield row_pool
+        rows_pool.append(row_pool)
         row_line_num += 1
 
-
-for i in make_rows_pool(data['rows'], len(data['cols'])):
-    print(i)
+    return rows_pool
