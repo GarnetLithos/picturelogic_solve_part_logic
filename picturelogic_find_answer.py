@@ -46,17 +46,14 @@ def picturelogic_find_answer(data):
             else:
                 break
         else:
-            print("find answer")
-            print(cycles)
-            break_flag = 1
+            return cycles
 
-        if break_flag == 1:
-            break
-        else:
-            cycles = cycle_count(cycles, cycle_max)
-            if cycles == -1:
-                print("End cycles, no answer.")
-                break
+        # if break_flag == 1:
+        #     break
+        # else:
+        cycles = cycle_count(cycles, cycle_max)
+        if cycles == -1:
+            return -1
 
 
 def cycle_count(cycles, cycle_max):
@@ -71,5 +68,3 @@ def cycle_count(cycles, cycle_max):
             cycles[i+1] += 1
 
     return cycles
-
-picturelogic_find_answer(data)
